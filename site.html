@@ -1,146 +1,79 @@
 <!DOCTYPE html>
-<html lang="ua">
+<html lang="uk">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ефір</title>
-<link rel="stylesheet" href="style.css">
+<title>Ефір Онлайн</title>
 
 <style>
 body {
     font-family: Arial, sans-serif;
-    text-align: center;
-    background: #889977;
+    background: #8a9875;
     margin: 0;
+    padding: 0;
+    text-align: center;
 }
 
-/* Шапка */
+/* Верхня шапка */
 .header {
     background: #0057b7;
     padding: 20px;
     color: white;
-    font-size: 40px;
+    font-size: 32px;
     font-weight: bold;
 }
 
-/* Аудіоплеєр */
-.my-box {
-    background: #c3e3f3;
-    padding: 15px;
-    border-radius: 10px;
-    display: inline-block;
-    margin-top: 20px;
+/* Блоки */
+.card {
+    background: white;
+    width: 300px;
+    padding: 20px;
+    margin: 30px auto;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
 }
 
-/* Зараз грає */
-#nowPlaying {
-    margin-top: 20px;
-    padding: 12px;
-    background: #007bff;
+button {
+    background: #0d6efd;
     color: white;
-    font-size: 22px;
-    font-weight: bold;
-    width: 30%;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 10px;
-}
-
-/* Історія */
-#history {
-    width: 30%;
-    margin: 20px auto;
-    padding: 0;
-}
-
-#history li {
-    list-style: none;
-    background: #ffe500;
-    padding: 12px;
-    margin: 8px 0;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
     font-size: 18px;
-    border-radius: 10px;
-    font-weight: bold;
-    color: #333;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    transition: 0.25s;
-}
-
-#history li:hover {
-    transform: scale(1.03);
+    cursor: pointer;
 }
 </style>
-<link rel="icon" href="favicon.png" type="image/x-icon">
+
 </head>
-<script>
-async function loadHistory() {
-    try {
-        const response = await fetch("http://s6.myradiostream.com:50428/played.html");
-        const text = await response.text();
-
-        // Витягуємо ВСІ рядки з таблиці
-        const rows = text.match(/<td[^>]*>.*?<\/td>/g);
-
-        if (!rows) {
-            document.getElementById("history").innerHTML = "Помилка читання даних";
-            return;
-        }
-
-        // Формуємо список останніх 10 треків
-        let list = "<h3>Історія треків</h3><ul>";
-
-        for (let i = 1; i < rows.length; i += 2) {  
-            let song = rows[i].replace(/<[^>]+>/g, "").trim();
-            list += `<li>${song}</li>`;
-        }
-
-        list += "</ul>";
-        document.getElementById("history").innerHTML = list;
-
-    } catch (e) {
-        document.getElementById("history").innerHTML = "Сталася помилка";
-    }
-}
-
-loadHistory();
-</script>
 <body>
 
 <div class="header">ЕФІР</div>
-<br/>
 
-
-<div style="text-align:center;">
+<div class="card">
     <h2>Онлайн Радіо</h2>
     <audio id="radioPlayer" controls autoplay></audio>
+    <p id="status" style="color: gray; font-size: 14px;">Завантаження...</p>
 </div>
 
 <script>
-// Твій потік
+// Твій HTTP-потік
 const streamUrl = "http://s6.myradiostream.com:50428/;stream.mp3";
 
-// Безкоштовний HTTPS проксі
+// Безкоштовний HTTPS-проксі
 const proxy = "https://corsproxy.io/?";
 
-// Плеєр
+// Встановлюємо URL
 const player = document.getElementById("radioPlayer");
 player.src = proxy + streamUrl;
+
+// Автовідтворення
 player.load();
-player.play().catch(e => console.log("Автовідтворення заблоковане:", e));
+player.play().then(() => {
+    document.getElementById("status").innerText = "Потік запущено!";
+}).catch(() => {
+    document.getElementById("status").innerText = "Натисніть ▶ для старту";
+});
 </script>
-<div id="nowPlaying" 
-     style="margin-top:20px; font-size:20px; color:white; font-weight:bold;">
-     Завантаження...
-</div>
-<div id="history">Завантаження...</div>
-    <h3>🎵 Історія треків</h3>
-    <ul id="trackHistory"></ul>
-</div>
-<audio controls autoplay>
-  <source src="http://s6.myradiostream.com:50428/;stream.mp3" type="audio/mpeg">
-  Ваш браузер не підтримує аудіо.
-</audio>
+
 </body>
-
 </html>
-
