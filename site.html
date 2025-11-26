@@ -110,12 +110,24 @@ loadHistory();
 <br/>
 
 
-<div style="text-align:center; padding:20px; background:#f7f7f7; border-radius:10px; width:300px; margin:auto;">
-    <h3>Онлайн Радіо</h3>
-    <audio controls autoplay style="width:100%;">
-        <source src="http://s6.myradiostream.com:50428/;stream.mp3" type="audio/mpeg">
-    </audio>
+<div style="text-align:center;">
+    <h2>Онлайн Радіо</h2>
+    <audio id="radioPlayer" controls autoplay></audio>
 </div>
+
+<script>
+// Твій потік
+const streamUrl = "http://s6.myradiostream.com:50428/;stream.mp3";
+
+// Безкоштовний HTTPS проксі
+const proxy = "https://corsproxy.io/?";
+
+// Плеєр
+const player = document.getElementById("radioPlayer");
+player.src = proxy + streamUrl;
+player.load();
+player.play().catch(e => console.log("Автовідтворення заблоковане:", e));
+</script>
 <div id="nowPlaying" 
      style="margin-top:20px; font-size:20px; color:white; font-weight:bold;">
      Завантаження...
@@ -131,3 +143,4 @@ loadHistory();
 </body>
 
 </html>
+
