@@ -1,0 +1,91 @@
+.testbutton {
+  font-family: arial;
+  color: #F7F7F7 !important;
+  font-size: 22px;
+  text-shadow: 1px 2px 8px #DE7F7F;
+  box-shadow: 1px 1px 1px #BEE2F9;
+  padding: 10px 25px;
+  border-radius: 10px;
+  border: 2px solid #3866A3;
+  background: #0E25EE;
+}
+.testbutton:hover {
+  color: #14396A !important;
+  background: #468CCF;
+  background: linear-gradient(to top, #468CCF, #63B8EE);
+}
+
+
+
+Индекс
+
+<!DOCTYPE html>
+<html lang="ua">
+<title>
+Головна
+</title>
+<head>
+<meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="icon" href="favicon.png" type="image/x-icon">
+</head>
+	<body>
+	<center>
+	<img src = "Radio-nt up.jpg" alt = "емблема">
+	</center>
+	<table border = 0px; style="width: 100%;">
+			<tr>
+			<td align = "center">
+			<img src="kartynka2.jpg" >
+			</td>
+			<td bgcolor = "fff033" align="center">
+			<a href="file:///C:/Users/Home/Desktop/Site/site.html" class="testbutton" target="_blank"><b>Ефір</a>
+			<br/>
+			<br/>
+			<br/>
+			<a href="What.html" class="testbutton" target="_blank"><b>Що краще?</a>
+			<br/>
+			<br/>
+			<br/>
+			<a href="message.html" class="testbutton" target="_blank"><b>Вітання</a>
+			<br/>
+			<br/>
+			<br/>
+			<a href="contact.html" class="testbutton" target="_blank"><b>Контакти</a>
+			</td>
+			<td align = "center">
+			<img src = "kartynka3.jpg">
+			</td>
+			</tr>
+	</table>
+	<img src = "Radio-nt down.jpg" class="bottom-image">
+	</body>
+</html>
+
+Плеєр
+
+<!DOCTYPE html>
+<html lang="ua">
+<title>Site</title>
+<head>
+<meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="icon" href="favicon.png" type="image/x-icon">
+
+</head>`
+	<body>
+	<center>
+	<img src = "Radio-nt up 2.jpg" alt = "емблема">
+	<center>
+	<div class="my-box" style="background-color: lightblue;">
+	<center>
+	<audio src="http://127.0.0.1:8000/;" controls="controls"></audio>
+	</center>
+	</div>
+	</center>
+	</body>
+</html>
+		
+			

@@ -1,0 +1,75 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fff;
+    text-align: center;
+}
+
+/* Верхнє і нижнє зображення */
+.header img,
+.footer img {
+    width: 100%;
+    height: auto;
+}
+
+/* Головний контейнер */
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    gap: 20px;
+}
+
+/* Бокові зображення */
+.side-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Меню */
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: #fff033;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 18px 30px; /* збільшено розмір кнопки */
+    background: #007BFF; /* синій колір */
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 20px; /* збільшений шрифт */
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #0056b3; /* темніший синій при наведенні */
+}
+
+/* 📱 АДАПТИВНИЙ РЕЖИМ ДЛЯ МОБІЛЬНИХ */
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+    }
+
+    .menu {
+        width: 90%;
+        margin: 0 auto;
+    }
+}
+.bottom-image {
+    display: block; /* Делает изображение блочным элементом */
+    width: 100%;    /* Растягивает на всю ширину, если нужно */
+    margin-top: 190px; /* Отступ сверху */
+}
+.my-box {
+  width: 300px;
+  padding: 20px;
+  border: 5px dotted #a0a0a0;
+}

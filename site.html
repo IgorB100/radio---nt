@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ефір</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #889977;
+    margin: 0;
+}
+
+/* Шапка */
+.header {
+    background: #0057b7;
+    padding: 20px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+/* Аудіоплеєр */
+.my-box {
+    background: #c3e3f3;
+    padding: 15px;
+    border-radius: 10px;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+/* Зараз грає */
+#nowPlaying {
+    margin-top: 20px;
+    padding: 12px;
+    background: #007bff;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+}
+
+/* Історія */
+#history {
+    width: 30%;
+    margin: 20px auto;
+    padding: 0;
+}
+
+#history li {
+    list-style: none;
+    background: #ffe500;
+    padding: 12px;
+    margin: 8px 0;
+    font-size: 18px;
+    border-radius: 10px;
+    font-weight: bold;
+    color: #333;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    transition: 0.25s;
+}
+
+#history li:hover {
+    transform: scale(1.03);
+}
+</style>
+<link rel="icon" href="favicon.png" type="image/x-icon">
+</head>
+<script>
+async function loadHistory() {
+    try {
+        const response = await fetch("http://s6.myradiostream.com:50428/played.html");
+        const text = await response.text();
+
+        // Витягуємо ВСІ рядки з таблиці
+        const rows = text.match(/<td[^>]*>.*?<\/td>/g);
+
+        if (!rows) {
+            document.getElementById("history").innerHTML = "Помилка читання даних";
+            return;
+        }
+
+        // Формуємо список останніх 10 треків
+        let list = "<h3>Історія треків</h3><ul>";
+
+        for (let i = 1; i < rows.length; i += 2) {  
+            let song = rows[i].replace(/<[^>]+>/g, "").trim();
+            list += `<li>${song}</li>`;
+        }
+
+        list += "</ul>";
+        document.getElementById("history").innerHTML = list;
+
+    } catch (e) {
+        document.getElementById("history").innerHTML = "Сталася помилка";
+    }
+}
+
+loadHistory();
+</script>
+<body>
+
+<div class="header">ЕФІР</div>
+<br/>
+
+
+<div style="text-align:center; padding:20px; background:#f7f7f7; border-radius:10px; width:300px; margin:auto;">
+    <h3>Онлайн Радіо</h3>
+    <audio controls autoplay style="width:100%;">
+        <source src="http://s6.myradiostream.com:50428/;stream.mp3" type="audio/mpeg">
+    </audio>
+</div>
+<div id="nowPlaying" 
+     style="margin-top:20px; font-size:20px; color:white; font-weight:bold;">
+     Завантаження...
+</div>
+<div id="history">Завантаження...</div>
+    <h3>🎵 Історія треків</h3>
+    <ul id="trackHistory"></ul>
+</div>
+
+</body>
+</html>
