@@ -1,44 +1,78 @@
 <!DOCTYPE html>
 <html lang="ua">
-<title>
-Написати нам
-</title>
 <head>
 <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="stylemes.css">
-<link rel="icon" href="favicon.png" type="image/x-icon">
-</head>
-<body>
-<div id="w">
-    <h1>Написати привітання!</h1>
-    <form id="contactform" name="contact" method="post" action="#">
-      <p class="note"><span class="req">*</span> Поля з зірочкою обов'язкові</p>
-      <div class="row">
-        <label for="name">Ваше Ім'я <span class="req">*</span></label>
-        <input type="text" name="name" id="name" class="txt" tabindex="1" placeholder="Ім'я та Прізвище" required>
-      </div>
-	  
-      <div class="row">
-        <label for="email">E-mail <span class="req">*</span></label>
-        <input type="email" name="email" id="email" class="txt" tabindex="2" placeholder="radiont@gmail.com" required>
-      </div>
-      
-      <div class="row">
-        <label for="subject">Тема <span class="req">*</span></label>
-        <input type="text" name="subject" id="subject" class="txt" tabindex="3" placeholder="Тема вітання" required>
-      </div>
-      
-      <div class="row">
-        <label for="message">Повідомлення <span class="req">*</span></label>
-        <textarea name="message" id="message" class="txtarea" tabindex="4" required></textarea>
-      </div>
-      
-      <div class="center">
-        <input type="submit" id="submitbtn" name="submitbtn" tabindex="5" value="Відправити">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Написати нам</title>
 
-      </div>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
+    margin: 0;
+    padding: 20px;
+}
+
+.form-container {
+    max-width: 500px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    margin-top: 10px;
+    width: 100%;
+    padding: 12px;
+    background: #0057b7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #003f87;
+}
+</style>
+</head>
+
+<body>
+
+<div class="form-container">
+    <h2>Написати нам</h2>
+
+    <form action="jeck.nt@gmail.com" method="POST">
+
+        <!-- Заборона капчі -->
+        <input type="hidden" name="_captcha" value="false">
+
+        <!-- Повернення на твою сторінку після успіху -->
+        <input type="hidden" name="_next" value="https://igorbt100.github.io/radio---nt/success.html">
+
+        <label>Ваше ім'я</label>
+        <input type="text" name="name" required>
+
+        <label>Ваш Email</label>
+        <input type="email" name="email" required>
+
+        <label>Повідомлення</label>
+        <textarea name="message" rows="5" required></textarea>
+
+        <button type="submit">Відправити</button>
     </form>
-  </div>
-  </body>
- </html>
+</div>
+
+</body>
+</html>
