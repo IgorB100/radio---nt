@@ -49,31 +49,10 @@ button {
 
 <div class="header">ЕФІР</div>
 
-<div class="card">
-    <h2>Онлайн Радіо</h2>
-    <audio id="radioPlayer" controls autoplay></audio>
-    <p id="status" style="color: gray; font-size: 14px;">Завантаження...</p>
-</div>
 
-<script>
-// Твій HTTP-потік
-const streamUrl = "http://s6.myradiostream.com:50428/;stream.mp3";
 
-// Безкоштовний HTTPS-проксі
-const proxy = "https://corsproxy.io/?";
-
-// Встановлюємо URL
-const player = document.getElementById("radioPlayer");
-player.src = proxy + streamUrl;
-
-// Автовідтворення
-player.load();
-player.play().then(() => {
-    document.getElementById("status").innerText = "Потік запущено!";
-}).catch(() => {
-    document.getElementById("status").innerText = "Натисніть ▶ для старту";
-});
-</script>
+<script src="//myradiostream.com/embed/IgorB100"></script>
 
 </body>
 </html>
+
