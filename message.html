@@ -52,28 +52,22 @@ button:hover {
 
 <div class="form-container">
     <h2>Написати нам</h2>
-
 <form action="https://formsubmit.co/jeck.nt@gmail.com" method="POST">
+    <input type="text" name="name" required placeholder="Ваше ім'я">
+    <input type="email" name="email" required placeholder="Email">
+    <textarea name="message" required placeholder="Повідомлення"></textarea>
 
-    <input type="hidden" name="_subject" value="Нове повідомлення з сайту">
+    <!-- Щоб не було капчі -->
     <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_template" value="table">
+
+    <!-- Сторінка після успіху -->
     <input type="hidden" name="_next" value="https://igorb100.github.io/radio---nt/success.html">
 
-    <label>Ваше ім’я:</label>
-    <input type="text" name="name" required>
-
-    <label>Ваш Email:</label>
-    <input type="email" name="email" required>
-
-    <label>Повідомлення:</label>
-    <textarea name="message" required></textarea>
-
-    <button type="submit">Надіслати</button>
+    <button type="submit">Відправити</button>
 </form>
-
 </body>
 </html>
+
 
 
 
